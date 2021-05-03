@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import teatre from "./teatre.json"
+import { Wrapper, Title, Button, Container } from "./styled"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+function App () {
+    const [text, actual] = useState(0);
+    const seguent = () => {
+        if (text !== teatre.length -1) {
+            actual(text +1);}
+        }
+    const anterior = () => {
+        if (text !== 0) {
+            actual(text -1);}
+        }
+
+return (
+<>
+    <div>
+        <Title>
+            Romeo & Julieta
+        </Title>
+        <Wrapper>
+            {teatre[text]}
+        </Wrapper>
+        <Container>
+            <Button onClick={anterior}>
+                Anterior
+            </Button>
+            <Button onClick={seguent}>
+                Següent
+            </Button>
+        </Container>
     </div>
+</>
   );
-}
-
+};
 export default App;
